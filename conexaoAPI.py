@@ -16,20 +16,21 @@ def identificacao_erro(URL):
 def informacoesGeraisCidades(URL):
     todasInformacoes = requests.get(URL)
     informacoesCidades = todasInformacoes.json()
-    clima = round((informacoesCidades["main"]["temp"])-273.15)
-    
-    return clima 
-# def exibicao(clima, cidade):
-#     print(f"O clima de {cidade} é {clima} graus celcius")
+    temperatura = round((informacoesCidades["main"]["temp"])-273.15)
+    pais = informacoesCidades["sys"]["country"]
+    clima = informacoesCidades["weather"][0]["description"]
+    return temperatura, pais, clima
+# def exibicao(temperatura, cidade, pais, clima):
+#     print(f"A temperatura em {cidade} é {temperatura} graus celcius\n Localizado no país {pais}\n no geral condições climaticas: {clima}")
 # # como encadear essa funções? Função Main
 # def main():
 #     cidade = input(f"Digite o nome da cidade que quer Consultar:\n ")
 #     URL = criacaoAPI(cidade, APIKEY)
 #     if identificacao_erro(URL) == True:
-#        clima = informacoesGeraisCidades(URL)
+#        temperatura, clima, pais = informacoesGeraisCidades(URL)
 #     elif identificacao_erro(URL) == False:
 #         erro = "Erro 404"
 #         print(f"Erro {erro} certifique-se de que a cidade existe")
-#     return exibicao(clima, cidade)
+#     return exibicao(temperatura, cidade, pais, clima)
 # main()
         

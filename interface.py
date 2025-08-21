@@ -25,8 +25,8 @@ def interface():
         URL = conexaoAPI.criacaoAPI(cidade, APIKEY)
         if conexaoAPI.identificacao_erro(URL) == False:
             rotulo_resultado.config(text="Erro, cidade não existente")
-        clima = conexaoAPI.informacoesGeraisCidades(URL)
-        rotulo_resultado.config(text=f"A Temperatura na cidade {cidade} é {clima} graus Celcius")
+        temperatura, pais, clima = conexaoAPI.informacoesGeraisCidades(URL)
+        rotulo_resultado.config(text=f"A temperatura em {cidade} é {temperatura} graus celcius\n Localizado no país {pais}\n No geral, condições climaticas: {clima}")
     # botão buscar
     botao_buscar = tk.Button(janela, text="Buscar Clima", command=buscandoClima)
     botao_buscar.pack()

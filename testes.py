@@ -5,3 +5,6 @@ URL = "https://api.openweathermap.org/data/2.5/weather?q=" + cidade + "&appid=" 
 resposta = requests.get(URL)
 print(resposta.status_code)
 print(resposta.json())
+informacoesCidades = resposta.json()
+clima = informacoesCidades['weather'][0]['description']
+print(clima)
